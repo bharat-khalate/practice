@@ -1,11 +1,21 @@
+
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ThirdLargest {
-    public static void main(String args[]) {
-        int[] arr = new int[] { 19, -10, 20, 14, 2, 16, 10 };
-        arr = Arrays.stream(arr).boxed().distinct().sorted().mapToInt(Integer::intValue).toArray();
-        System.out.println((arr.length > 2) ? arr[arr.length - 3] : (arr.length > 1) ? arr[2] : arr[0]);
-
+    public static void main(String[] args) {
+        var numList = new ArrayList<>(List.of(1, 14, 2, 16, 10, 20      ).stream().sorted().distinct().toList());
+        int largest=0, secondLargest=0, thirdLargest=0;
+        for(int val:numList)
+            if(val>largest){
+                thirdLargest=secondLargest;
+                secondLargest=largest;
+                largest=val;
+            }else if(val>secondLargest && val<largest){
+                thirdLargest=secondLargest;
+                secondLargest=val;
+            }else if(val > thirdLargest && val<secondLargest){
+                thirdLargest=val;
+            }
+        System.out.println(thirdLargest);
     }
 }

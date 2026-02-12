@@ -1,18 +1,16 @@
 import java.util.*;
-import java.util.stream.*;
 
 public class ArrayLeaders {
-    public static void main(String args[]) {
-        int arr[] = new int[] { 1, 2, 3, 4, 5, 2 };
-        List<Integer> leaderList = new ArrayList<>();
-        int i = 0;
-        while (i < arr.length) {
-            int max = (int) Arrays.stream(arr).boxed().skip(i).max(Comparator.naturalOrder()).orElse(0);
-            if (max == arr[i])
-                leaderList.add(arr[i]);
-            i++;
+    public static void main(String[] args) {
+        var numList = new ArrayList<>(List.of(1, 2, 3, 4, 5, 2));
+        var leadersList = new ArrayList<Integer>();
+        Collections.reverse(numList);
+        leadersList.add(numList.removeFirst());
+        while (!numList.isEmpty()) {
+            int cur = numList.removeFirst();
+            if (leadersList.getFirst() < cur)
+                leadersList.addFirst(cur);
         }
-
-        leaderList.stream().forEach(System.out::println);
+        System.out.println(leadersList);
     }
 }

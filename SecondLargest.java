@@ -1,14 +1,16 @@
+
 import java.util.*;
-import java.util.stream.Collectors;
 
-public class SecondLargest {
-
-    public static void main(String args[]) {
-        int[] arr = new int[] { 10, 10 };
-        arr = Arrays.stream(arr).boxed().sorted(Comparator.naturalOrder()).distinct().peek(System.out::println)
-                .mapToInt(Integer::intValue)
-                .toArray();
-        System.out.println((arr.length > 1) ? arr[arr.length - 2] : arr[0]);
+class SecondLargest {
+    public static void main(String[] args) {
+        var numList = new ArrayList<>(List.of(12, 35, 1, 10, 34, 1));
+        int largest = 0, secondLargest = 0;
+        for (int val : numList)
+            if (val > largest) {
+                secondLargest = largest;
+                largest = val;
+            } else if (val > secondLargest)
+                secondLargest = val;
+        System.out.println(secondLargest);
     }
-
 }
