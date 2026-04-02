@@ -4,18 +4,11 @@ import java.util.List;
 public class StockBuyAndSellMultipleTrans {
     public static void main(String[] args) {
         var numList = new ArrayList<>(List.of(4, 2));
-        int totalProfit = 0, tempMaxProfit = 0, min = Integer.MAX_VALUE;
-        for (int price : numList) {
-            if (price < min) {
-                totalProfit += tempMaxProfit;
-                tempMaxProfit=0;
-                min = price;
-                continue;
-            }
-            int currentProfit=price-min;
-            tempMaxProfit=Math.max(tempMaxProfit, currentProfit);
+        int totalProfit = 0;
+        for(int i=1; i<numList.size();i++){
+            if(numList.get(i)>numList.get(i-1))
+                totalProfit=totalProfit+(numList.get(i)-numList.get(i-1));
         }
-        totalProfit+=tempMaxProfit;
         System.out.println(totalProfit);
     }
 }

@@ -1,24 +1,32 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.io.*;
 
 public class RotateByD {
-    public static void main(String[] args) {
-        List<Integer> numList = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
-        int d = 2;
-        d = d % numList.size();
-        reverseList(numList, 0, d - 1);
-        reverseList(numList, d, numList.size() - 1);
-        reverseList(numList, 0, numList.size() - 1);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int d = Integer.parseInt(br.readLine());
+        var list = br.readLine().split(" ");
+        var numList = new ArrayList<Integer>();
+        for (String str : list)
+            numList.add(Integer.parseInt(str));
+        if(d>numList.size()){
+            reverseList(0, numList.size()-1, numList);
+            System.out.println(numList);
+            return;
+        }
+        reverseList(0, d - 1, numList);
+        reverseList(d, numList.size() - 1, numList);
+        reverseList(0, numList.size() - 1, numList);
         System.out.println(numList);
 
     }
 
-    public static void reverseList(List<Integer> numList, int start, int end) {
+    public static void reverseList(int start, int end, List<Integer> numList) {
         while (start < end) {
-            Collections.swap(numList, start, end);
-            start++;
-            end--;
+            Collections.swap(numList, start++, end--);
         }
     }
 }

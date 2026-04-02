@@ -1,21 +1,23 @@
 import java.util.*;
+import java.io.*;
 
 public class ReverseInGroup {
-    public static void main(String[] args) {
-        var numList = new ArrayList<>(List.of(1, 2, 3, 4, 5));
-       int k=3;
-       if(k>=numList.size()){
-        Collections.reverse(numList);
-       }
-       for(int i=0;i<numList.size();i+=k){
-        int start=i;
-        int end=Math.min(i+k-1, numList.size()-1);
-        while (start<end) {
-            Collections.swap(numList, start, end);
-            start++;
-            end--;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int size = Integer.parseInt(br.readLine());
+        var list = br.readLine().split(" ");
+        List<Integer> arr = new ArrayList<>();
+        for (String s : list) {
+            arr.add(Integer.parseInt(s));
         }
-       }
-       System.out.println(numList);
+        int k = Integer.parseInt(br.readLine());
+        for (int i = 0; i < arr.size(); i += k) {
+            int start = i;
+            int end = Math.min(i + k - 1, arr.size() - 1);
+            while (start < end) {
+                Collections.swap(arr, start++, end--);
+            }
+        }
+        System.out.println(arr);
     }
 }

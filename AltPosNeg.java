@@ -1,19 +1,24 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.io.*;
 
 public class AltPosNeg {
-    public static void main(String[] args) {
-        var numList = new ArrayList<>(List.of(-5, -2, 5, 2, 4, 7, 1, 8, 0, -8));
-        List<Integer> negList = numList.stream().filter(i -> i < 0).toList();
-        numList = new ArrayList<Integer>(numList.stream().filter(i -> i >= 0).toList());
-        int i = 1;
-        for (int j = 0; j < negList.size(); j++) {
-            if (i < numList.size()) {
-                numList.add(i, negList.get(j));
-                i += 2;
-                continue;
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String[] inputArr = bf.readLine().split(" ");
+        var numList = Arrays.stream(inputArr).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+        var negList = numList.stream().filter(i -> i < 0).collect(Collectors.toList());
+        numList = new ArrayList<>(numList.stream().filter(i -> i >= 0).toList());
+        int numIdx = 1;
+        for (int i = 0; i < negList.size(); i++) {
+            if (numIdx < numList.size()) {
+                numList.add(numIdx, negList.get(i));
+                numIdx += 2;
+            } else {
+                numList.add(negList.get(i));
             }
-            numList.add(negList.get(j));
         }
         System.out.println(numList);
     }

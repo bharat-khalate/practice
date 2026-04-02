@@ -1,15 +1,19 @@
+import java.io.*;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class ArrayLeaders {
-    public static void main(String[] args) {
-        var numList = new ArrayList<>(List.of(1, 2, 3, 4, 5, 2));
-        var leadersList = new ArrayList<Integer>();
-        Collections.reverse(numList);
-        leadersList.add(numList.removeFirst());
-        while (!numList.isEmpty()) {
-            int cur = numList.removeFirst();
-            if (leadersList.getFirst() < cur)
-                leadersList.addFirst(cur);
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        var numList = Arrays.stream(bf.readLine().split(" ")).map(i -> Integer.parseInt(i.trim())).toList();
+        List<Integer> leadersList = new ArrayList<>();
+        int currentLeader = 0;
+        for (int i = numList.size() - 1; i >= 0; i--) {
+            int candidate = numList.get(i);
+            if (candidate > currentLeader) {
+                leadersList.addFirst(candidate);
+                currentLeader = candidate;
+            }
         }
         System.out.println(leadersList);
     }
