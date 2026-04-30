@@ -31,9 +31,7 @@ public class StringMultiPlication {
             product += res;
             n2--;
         }
-
         System.out.println(product);
-
     }
 }
 
@@ -61,7 +59,6 @@ class StringProduct {
         String resturnString = new String(sb);
         return sb.length() == 0 ? "0" : resturnString;
     }
-
     public static void main(String args[]) {
         System.out.println(multiply("123", "456"));
     }

@@ -1,25 +1,30 @@
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.io.*;
 
 public class AltPosNeg {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         String[] inputArr = bf.readLine().split(" ");
-        var numList = Arrays.stream(inputArr).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
-        var negList = numList.stream().filter(i -> i < 0).collect(Collectors.toList());
-        numList = new ArrayList<>(numList.stream().filter(i -> i >= 0).toList());
-        int numIdx = 1;
-        for (int i = 0; i < negList.size(); i++) {
-            if (numIdx < numList.size()) {
-                numList.add(numIdx, negList.get(i));
-                numIdx += 2;
-            } else {
-                numList.add(negList.get(i));
-            }
+        List<Integer> arr = Arrays.stream(inputArr).map(Integer::parseInt).toList();
+        List<Integer> negList = arr.stream().filter(i -> i < 0).toList();
+        List<Integer> posList = arr.stream().filter(i -> i >= 0).toList();
+        int pi = 0;
+        int ni = 0;
+        int idx = 0;
+
+        while (pi < posList.size() && ni < negList.size()) {
+            arr.set(idx++, posList.get(pi++));
+            arr.set(idx++, negList.get(ni++));
         }
-        System.out.println(numList);
+
+        while (pi < posList.size()) {
+            arr.set(idx++, posList.get(pi++));
+        }
+
+        while (ni < negList.size()) {
+            arr.set(idx++, negList.get(ni++));
+        }
     }
 }
