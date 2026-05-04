@@ -16,5 +16,4 @@ public class MaxConsOne {
         }
         System.out.println(max);
     }
-
 }

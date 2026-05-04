@@ -18,6 +18,7 @@ public class AntAndPlanks {
         for (int pos : right) {
             res = Math.max(n - pos, res);
         }
+        
         System.out.println(res);
         // int n = 4;
         // var left = new ArrayList<Integer>(List.of());

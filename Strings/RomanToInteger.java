@@ -1,0 +1,52 @@
+package Strings;
+
+/**
+ * Given a string s in Roman number format, your task is to convert it to an
+ * integer. Various symbols and their values are given below.
+ * Note: I = 1, V = 5, X = 10, L = 50, C = 100, D = 500, M = 1000
+ * 
+ * @example
+ *          Input: s = "IX"
+ *          Output: 9
+ *          Explanation: IX is a Roman symbol which represents 10 – 1 = 9.
+ * 
+ *          Input: s = "XL"
+ *          Output: 40
+ *          Explanation: XL is a Roman symbol which represents 50 – 10 = 40.
+ * 
+ *          Input: s = "MCMIV"
+ *          Output: 1904
+ *          Explanation: M is 1000, CM is 1000 – 100 = 900, and IV is 4. So we
+ *          have total as 1000 + 900 + 4 = 1904.
+ */
+
+public class RomanToInteger {
+    public static int romanToDecimal(String s) {
+        // code here
+        int pre = getIntegerValue(s.charAt(0));
+        int res = getIntegerValue(s.charAt(0));
+        for (int i = 1; i < s.length(); i++) {
+            int currentNum = getIntegerValue(s.charAt(i));
+            res = (pre >= currentNum) ? res + currentNum : res - pre + currentNum - pre;
+            pre = currentNum;
+        }
+        return res;
+    }
+
+    public static int getIntegerValue(char c) {
+        return switch (c) {
+            case 'I' -> 1;
+            case 'V' -> 5;
+            case 'X' -> 10;
+            case 'L' -> 50;
+            case 'C' -> 100;
+            case 'D' -> 500;
+            case 'M' -> 1000;
+            default -> 0;
+        };
+    }
+
+    public static void main(String args[]) {
+        System.out.println(romanToDecimal("XIX")); // output 19
+    }
+}
