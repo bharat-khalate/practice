@@ -45,10 +45,9 @@ public class AddBinaryStrings {
             carry = sum / 2;
         }
 
-        // reverse result
+
         String result = sb.reverse().toString();
 
-        // 🔥 remove leading zeros
         int k = 0;
         while (k < result.length() - 1 && result.charAt(k) == '0') {
             k++;
