@@ -1,4 +1,4 @@
-package Strings;
+ ;
 
 /**
  * @Problem Find the nth term in Look-and-say (Or Count and Say) Sequence. The

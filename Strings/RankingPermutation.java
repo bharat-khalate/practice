@@ -1,4 +1,4 @@
-package Strings;
+ ;
 
 /**
  * @Problem Given a string s consisting of distinct lowercase characters,

@@ -1,4 +1,4 @@
-package Strings;
+
 
 /**
  * Given two strings s1 and s2 of equal length, determine whether s2 is a

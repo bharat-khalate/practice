@@ -1,4 +1,4 @@
-package Strings;
+ 
 
 /**
  * Given a string s, convert it into a 32-bit signed integer (similar to the

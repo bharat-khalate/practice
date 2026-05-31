@@ -1,4 +1,4 @@
-package Strings;
+ 
 
 /**
  * You are given a string S. Every sub-string of identical letters is replaced

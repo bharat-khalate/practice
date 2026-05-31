@@ -1,4 +1,4 @@
-package Strings;
+ ;
 
 /**
  * @Problem Given a string s, check if it is a "Panagram" or not. Return true if

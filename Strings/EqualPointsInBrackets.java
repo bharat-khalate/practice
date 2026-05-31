@@ -1,4 +1,4 @@
-package Strings;
+ ;
 
 /**
  * @problem Given a string str of opening and closing brackets '(' and ')' only.

@@ -1,4 +1,4 @@
-package Strings;
+ ;
 
 /**
  * @Problem Given a special keyboard that contains only four keys:

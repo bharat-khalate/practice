@@ -8,7 +8,7 @@ Example 1:
 
  */
 
-package Strings;
+ ;
 
 public class StringMultiPlication {
 

@@ -1,4 +1,4 @@
-package Strings;
+ ;
 
 /**
  * @Problem Given a decimal number m. Consider its binary representation string

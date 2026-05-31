@@ -1,4 +1,4 @@
-package Strings;
+ ;
 
 /**
  * @Problem Given a palindromic number N in the form of string. The task is to

@@ -1,4 +1,4 @@
-package Strings;
+ ;
 
 /**
  * @Problem Given a single string s, the task is to check if it is a palindrome

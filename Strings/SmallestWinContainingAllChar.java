@@ -1,4 +1,4 @@
-package Strings;
+ ;
 
 /**
  * @Problem Given two strings s and p. Find the smallest substring in s
